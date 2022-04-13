@@ -1,12 +1,13 @@
 import './styles.css';
 import { Route, Routes } from 'react-router-dom';
-import {Home} from "./pages";
+import {Landing, Home, NotFound} from "./pages";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Home/>} />
+        <Route path='/' element={<Landing/>} />
+        <Route path='*' element={<NotFound/>} />
       </Routes>
     </div>
   );
