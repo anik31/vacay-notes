@@ -8,6 +8,14 @@ html{
     color: var(--text-color);
 }
 
+/* || sidebar */
+
+.sidebar-container{
+    display: grid;
+    grid-template-columns: 15rem 1fr;
+    min-height: 90vh;
+}
+
 /* error or empty page */
 
 .container-error-page{
@@ -21,4 +29,12 @@ html{
 
 .container-error-page img{
     max-width: 20rem;
+}
+
+/* || media queries */
+
+@media only screen and (max-width: 900px){
+    .sidebar-container{
+        grid-template-columns: 1fr;
+    }
 }

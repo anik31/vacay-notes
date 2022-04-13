@@ -1,1 +1,1 @@
-export {Home} from "./home/Home";
+export {Notes} from "./notes/Notes";

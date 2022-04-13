@@ -1,5 +1,6 @@
 import "./landing.css";
 import {logo, hero} from "../../assets";
+import { Link } from "react-router-dom";
 
 export function Landing(){
     return (
@@ -16,7 +17,7 @@ export function Landing(){
                         </div>
                         <p>Manage your daily tasks and workflow in a modern way and boost your efficiency without any efforts.</p>
                     </div>
-                    <button className="btn btn-primary">JOIN NOW</button>
+                    <Link to="/home" className="btn btn-primary">JOIN NOW</Link>
                 </div>
                 <div className="img-wrapper">
                     <img src={hero} className="img-responsive" alt="hero" />

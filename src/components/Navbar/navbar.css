@@ -1,0 +1,37 @@
+.header .search-box:focus-within{
+    border-color: var(--primary-color);
+}
+
+.header .search-box{
+    flex-basis: 40rem;
+}
+
+.header{
+    border-bottom: 1px solid var(--lynx-gray-color);
+    flex-wrap: nowrap;
+}
+
+.header .logo{
+    width: 10rem;
+    margin-right: 2rem;
+}
+
+.logo-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.header button{
+    margin: 0 2rem;
+}
+
+@media only screen and (max-width:810px){
+    .header{
+        flex-wrap: wrap;
+    }
+    
+    .search-box{
+        order: 2;
+        flex-grow: 1;
+    }
+}
