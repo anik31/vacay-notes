@@ -28,7 +28,7 @@ export function Sidebar(){
             </ul>
             <div className="nav-item">
                 <Link to="/profile" className="user">
-                    <i class="fas fa-user"></i>
+                    <i className="fas fa-user"></i>
                     <span>Username</span>
                 </Link>
                 <button className="btn-icon"><i className="fas fa-sign-out-alt"></i></button>

@@ -8,6 +8,10 @@ html{
     color: var(--text-color);
 }
 
+button{
+    background-color: transparent;
+}
+
 /* || sidebar */
 
 .sidebar-container{
