@@ -1,8 +1,15 @@
 .note-filter-wrapper{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    gap: 1rem;
     margin: 2rem 0;
+}
+
+.note-filter-wrapper div{
+    display: flex;
+    gap: 1rem;
 }
 
 .btn-primary-outline:hover .btn-primary-icon{

@@ -15,6 +15,22 @@ button{
     background-color: transparent;
 }
 
+/* || utils */
+
+.align-subtitle{
+    margin-left: 3rem;
+}
+
+.text-title{
+    border-bottom: 2px solid var(--primary-color);
+    width: fit-content;
+    margin: 1rem auto;
+}
+
+.m-b-4{
+    margin-bottom: 4rem;
+}
+
 /* || sidebar */
 
 .sidebar-container{
@@ -57,10 +73,27 @@ button{
     border: 1px solid var(--lynx-gray-color);
 }
 
+/* || notes page */
+
+.notes-container{
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19.5rem, 1fr));
+    justify-items: center;  
+    gap: 1rem;
+}
+
 /* || media queries */
 
 @media only screen and (max-width: 900px){
     .sidebar-container{
         grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width:480px){    
+    .align-subtitle{
+        /* margin: 0 auto; */
+        text-align: center;
     }
 }

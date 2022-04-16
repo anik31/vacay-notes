@@ -68,7 +68,7 @@
         margin: 0.3rem 0;
     }
     
-    .sidebar>div.nav-item, .label-list{
+    .sidebar>div.nav-item, .sidebar .label-list{
         display: none;
     }
 }

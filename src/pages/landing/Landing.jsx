@@ -7,6 +7,7 @@ export function Landing(){
         <div className="landing-container">
             <header>
                 <img src={logo} alt="logo" />
+                <button className="btn-icon"><i className="fas fa-moon"></i></button>
             </header>
             <main className="hero">
                 <div className="hero-content">
@@ -17,7 +18,7 @@ export function Landing(){
                         </div>
                         <p>Manage your daily tasks and workflow in a modern way and boost your efficiency without any efforts.</p>
                     </div>
-                    <Link to="/home" className="btn btn-primary">JOIN NOW</Link>
+                    <Link to="/home" className="btn btn-primary">Join Now</Link>
                 </div>
                 <div className="img-wrapper">
                     <img src={hero} className="img-responsive" alt="hero" />

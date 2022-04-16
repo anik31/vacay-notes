@@ -1,0 +1,51 @@
+.note{
+    border-radius: var(--border-radius);
+    border: 1px solid var(--lynx-gray-color);
+    width: 20rem;
+    height: max-content;
+    padding: 0.7rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.note p{
+    margin: 0.5rem 0;
+    width: 33ch;
+
+}
+
+.note .note-tools{
+    padding: 0;
+}
+
+.note .note-tools>span{
+    font-size: 0.9rem;
+}
+
+.note-tools div{
+    display: flex;
+    gap: 1rem;
+}
+
+.label-pills{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.label-pills div{
+    display: flex;
+    gap: 0.2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.label-pills span{
+    font-size: 0.7rem;
+    background-color: var(--lynx-gray-color);
+    border-radius: 1rem;
+    padding: 0.2rem 0.4rem;
+}

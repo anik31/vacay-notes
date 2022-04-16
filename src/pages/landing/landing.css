@@ -6,6 +6,12 @@
     height: 85vh;
 }
 
+.landing-container header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .hero{
     display: flex;
     justify-content: space-between;
@@ -32,10 +38,9 @@
 }
 
 .hero-content .btn{
-    font-size: 1rem;
-    margin: 0 auto;
+    font-size: 1.3rem;
+    margin-right: auto;
     padding: 1rem 1.5rem;
-    font-weight: 500;
 }
 
 .hero-content>div{
@@ -76,5 +81,9 @@
 
     .hero-content{
         gap: 2rem;
+    }
+
+    .hero-content .btn{
+        margin: 0 auto;
     }
 }
