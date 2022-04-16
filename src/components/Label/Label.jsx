@@ -1,4 +1,4 @@
-import "./labelModal.css";
+import "./label.css";
 
 export function LabelModal({setIsLabelModalOpen}){
     return (

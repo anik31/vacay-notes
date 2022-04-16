@@ -1,6 +1,6 @@
 .create-note{
     border-radius: var(--border-radius);
-    margin: 1rem auto;
+    flex-basis: 30rem;
     max-width: 30rem;
     display: flex;
     flex-direction: column;
@@ -55,4 +55,5 @@
 .note-tools select{
     border: none;
     outline: none;
+    cursor: pointer;
 }

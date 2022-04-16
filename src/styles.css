@@ -3,6 +3,9 @@
 
 
 /* || general css */
+:root{
+    --modal-background: rgb(234, 234, 236,0.3);
+}
 
 html{
     color: var(--text-color);
@@ -33,6 +36,25 @@ button{
 
 .container-error-page img{
     max-width: 20rem;
+}
+
+/* || modal */
+
+.modal-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--modal-background);
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-wrapper output{
+    border: 1px solid var(--lynx-gray-color);
 }
 
 /* || media queries */

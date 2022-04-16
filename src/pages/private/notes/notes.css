@@ -1,0 +1,10 @@
+.note-filter-wrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.btn-primary-outline:hover .btn-primary-icon{
+    color: white;
+}

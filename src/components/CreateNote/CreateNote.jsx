@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./createNote.css";
 import {filledPin, outlinePin} from "../../assets";
 import { ColorPallete } from "../ColorPallete/ColorPallete";
-import { LabelModal } from "../LabelModal/LabelModal";
+import { LabelModal } from "../Label/Label";
 
 export function CreateNote(){
     const [isExpanded, setIsExpanded] = useState(false);

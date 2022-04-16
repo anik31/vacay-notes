@@ -2,7 +2,6 @@ import { Link, NavLink } from "react-router-dom";
 import "./sidebar.css";
 
 const sidebarData = [
-    { linkTo: "/home", linkFor: "Notes", icon: "fas fa-lightbulb" },
     { linkTo: "/archive", linkFor: "Archive", icon: "fas fa-archive" },
     { linkTo: "/trash", linkFor: "Trash", icon: "fas fa-trash" },
     { linkTo: "/profile", linkFor: "Profile", icon: "fas fa-user-circle" }
@@ -17,6 +16,22 @@ export function Sidebar(){
     return (
         <nav className="sidebar">
             <ul>
+                <li>
+                    <NavLink style={getActiveStyle} to="/home" className="nav-item">
+                        <i className="fas fa-lightbulb"></i>
+                        <span>Home</span>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink style={getActiveStyle} to="/label" className="nav-item">
+                        <i className="fas fa-tags"></i>
+                        <span>Labels</span>
+                    </NavLink>
+                    <ul className="label-list">        
+                        <li>Label1</li>
+                        <li>Label2</li>
+                    </ul>
+                </li>
             {sidebarData.map(item=>
                 <li key={item.linkTo}>
                     <NavLink style={getActiveStyle} to={item.linkTo} className="nav-item">

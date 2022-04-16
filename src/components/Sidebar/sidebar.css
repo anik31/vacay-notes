@@ -33,6 +33,15 @@
     gap: 2rem;
 }
 
+.label-list{
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5rem;
+    gap: 0.5rem;
+}
+
 @media only screen and (max-width:900px) {
     .sidebar{
         position: fixed;
@@ -59,7 +68,7 @@
         margin: 0.3rem 0;
     }
     
-    .sidebar>div.nav-item{
+    .sidebar>div.nav-item, .label-list{
         display: none;
     }
 }
