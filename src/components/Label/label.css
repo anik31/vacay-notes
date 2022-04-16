@@ -5,9 +5,10 @@
     flex-direction: column;
     padding: 0.2rem;
     position: absolute;
-    bottom: -7rem;
+    bottom: -8rem;
     left: 4rem;
     border: 1px solid var(--lynx-gray-color);
+    z-index: var(--z-index-2);
 }
 
 .label-modal .input-btn-wrapper{

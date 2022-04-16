@@ -13,7 +13,7 @@ export function Navbar(){
                 <i className="fas fa-search"></i>
                 <input type="text" placeholder="Search" />
             </div>
-            <button className="btn-icon"><i className="fas fa-moon"></i></button>
+            <button title="Dark Mode" className="btn-icon"><i className="fas fa-moon"></i></button>
         </header>
     );
 }

@@ -22,8 +22,8 @@ export function CreateNote(){
         <div className="box-shadow create-note">
             {isExpanded && 
             (isPinned 
-            ? <img src={filledPin} className="btn-pin" alt="pin" onClick={pinHandler} />
-            : <img src={outlinePin} className="btn-pin" alt="pin" onClick={pinHandler} />)}
+            ? <img src={filledPin} title="Unpin Note" className="btn-pin" alt="pin" onClick={pinHandler} />
+            : <img src={outlinePin} title="Pin Note" className="btn-pin" alt="pin" onClick={pinHandler} />)}
             
             {isExpanded && 
             <input
@@ -48,9 +48,9 @@ export function CreateNote(){
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
                     </select>
-                    <button className="btn-icon" onClick={()=>setIsLabelModalOpen(prev=>!prev)}><i className="fas fa-tags"></i></button>
+                    <button className="btn-icon" title="Add Labels" onClick={()=>setIsLabelModalOpen(prev=>!prev)}><i className="fas fa-tags"></i></button>
                     {isLabelModalOpen && <LabelModal setIsLabelModalOpen={setIsLabelModalOpen} />}
-                    <button className="btn-icon" onClick={()=>setIsColorPalleteOpen(prev=>!prev)}><i className="fas fa-palette"></i></button>
+                    <button className="btn-icon" title="Add background color" onClick={()=>setIsColorPalleteOpen(prev=>!prev)}><i className="fas fa-palette"></i></button>
                     {isColorPalleteOpen && <ColorPallete setIsColorPalleteOpen={setIsColorPalleteOpen} />}
                 </div>
                 <div>

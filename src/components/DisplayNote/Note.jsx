@@ -17,8 +17,8 @@ export function Note(){
     return (
         <div className="note">
             {pathname==="/home" && (isPinned 
-            ? <img src={filledPin} className="btn-pin" alt="pin" onClick={pinHandler} />
-            : <img src={outlinePin} className="btn-pin" alt="pin" onClick={pinHandler} />)}
+            ? <img src={filledPin} title="Unpin Note" className="btn-pin" alt="pin" onClick={pinHandler} />
+            : <img src={outlinePin} title="Pin Note" className="btn-pin" alt="pin" onClick={pinHandler} />)}
             <div>
                 <h4>note title</h4>
                 <p>note contenb cjbcxbnxnbnnsdvsbfsbf fdvsftd</p>
@@ -34,7 +34,10 @@ export function Note(){
                 
                 <div className="note-tools">
                     <span className="text-gray">Created on: 2022-4-7 23:13</span>
-                    {(pathname==="/home" && <HomeButtons/>) || (pathname==="/archive" && <ArchiveButtons/>) || (pathname === "/trash" && <TrashButtons/>) || (pathname === "/label" && <></>)}
+                    {(pathname==="/home" && <HomeButtons/>) 
+                    || (pathname==="/archive" && <ArchiveButtons/>) 
+                    || (pathname === "/trash" && <TrashButtons/>) 
+                    || (pathname === "/label" && <></>)}
                 </div>
             </div>
         </div>

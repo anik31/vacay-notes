@@ -46,7 +46,7 @@ export function Sidebar(){
                     <i className="fas fa-user"></i>
                     <span>Username</span>
                 </Link>
-                <button className="btn-icon"><i className="fas fa-sign-out-alt"></i></button>
+                <button title="Logout" className="btn-icon"><i className="fas fa-sign-out-alt"></i></button>
             </div>
         </nav>
     );

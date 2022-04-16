@@ -7,7 +7,7 @@ export function Landing(){
         <div className="landing-container">
             <header>
                 <img src={logo} alt="logo" />
-                <button className="btn-icon"><i className="fas fa-moon"></i></button>
+                <button title="Dark Mode" className="btn-icon"><i className="fas fa-moon"></i></button>
             </header>
             <main className="hero">
                 <div className="hero-content">
