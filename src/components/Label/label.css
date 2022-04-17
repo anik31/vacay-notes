@@ -1,0 +1,50 @@
+.label-modal{
+    border-radius: var(--border-radius);
+    background-color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    padding: 0.2rem;
+    position: absolute;
+    bottom: -8rem;
+    left: 4rem;
+    border: 1px solid var(--lynx-gray-color);
+    z-index: var(--z-index-2);
+}
+
+.label-modal .input-btn-wrapper{
+    display: flex;
+    gap: 0.3rem;
+}
+
+.label-modal .input-btn-wrapper input{
+    width: 4rem;
+    height: 0.5rem;
+    border-bottom: 1px solid var(--lynx-gray-color);
+    border-radius: 0;
+    padding: 0.8rem 0.5rem;
+}
+
+.label-modal .input-btn-wrapper .btn{
+    font-size: 0.7rem;
+    padding: 0.1rem 0.2rem;
+}
+
+.label-modal ul{
+    list-style: none;
+}
+
+.label-modal label{
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    cursor: pointer;
+}
+
+.label-modal li{
+    margin: 0.2rem 0;
+}
+
+.label-modal input[type="checkbox"]{
+    width: 0.9rem;
+    height: 0.9rem;
+}

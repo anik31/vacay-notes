@@ -1,0 +1,39 @@
+.filter-modal{
+    width: 20rem;
+    height: fit-content;
+    align-items: flex-start;
+    padding: 1rem;
+}
+
+.filter-modal hr{
+    width: 100%;
+    padding: 0;
+}
+
+.filter-modal ul{
+    list-style: none;
+}
+
+.filter-modal .input-grp, .filter-modal .input-btn-wrapper{
+    display: flex;
+    gap: 1rem;
+}
+
+.filter-modal .input-btn-wrapper{
+    margin: 0.3rem 0;
+}
+
+.filter-modal .input-btn-wrapper .btn{
+    font-size: 0.8rem;
+    padding: 0.3rem 0.5rem;
+}
+
+.input input{
+    margin: 0.2rem 0.5rem;
+}
+.input label{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}

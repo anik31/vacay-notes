@@ -1,2 +1,99 @@
 /* vacay-ui css */
 @import url("https://vacay-ui.netlify.app/components/vacay.css");
+
+
+/* || general css */
+:root{
+    --modal-background: rgb(234, 234, 236,0.3);
+}
+
+html{
+    color: var(--text-color);
+}
+
+button{
+    background-color: transparent;
+}
+
+/* || utils */
+
+.align-subtitle{
+    margin-left: 3rem;
+}
+
+.text-title{
+    border-bottom: 2px solid var(--primary-color);
+    width: fit-content;
+    margin: 1rem auto;
+}
+
+.m-b-4{
+    margin-bottom: 4rem;
+}
+
+/* || sidebar */
+
+.sidebar-container{
+    display: grid;
+    grid-template-columns: 15rem 1fr;
+    min-height: 90vh;
+}
+
+/* error or empty page */
+
+.container-error-page{
+    text-align: center;
+}
+
+.container-error-page .btn{
+    margin: 0.5rem auto;
+    width: fit-content;
+}
+
+.container-error-page img{
+    max-width: 20rem;
+}
+
+/* || modal */
+
+.modal-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--modal-background);
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-wrapper output{
+    border: 1px solid var(--lynx-gray-color);
+}
+
+/* || notes page */
+
+.notes-container{
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19.5rem, 1fr));
+    justify-items: center;  
+    gap: 1rem;
+}
+
+/* || media queries */
+
+@media only screen and (max-width: 900px){
+    .sidebar-container{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width:480px){    
+    .align-subtitle{
+        /* margin: 0 auto; */
+        text-align: center;
+    }
+}

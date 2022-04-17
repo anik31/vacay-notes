@@ -1,0 +1,35 @@
+.profile{
+    border-radius: var(--border-radius);
+    border: 1px solid var(--lynx-gray-color);
+    padding: 1rem;
+    background-color: var(--primary-color-50);
+    margin: 2rem auto;
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profile div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile div:last-child{
+    width: 30%;
+}
+
+.profile div ul{
+    list-style: none;
+    width: 100%;
+}
+
+.profile div ul li{
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+}
