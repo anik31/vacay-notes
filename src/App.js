@@ -1,6 +1,6 @@
 import './styles.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import {Archive, Label, Landing, Notes, NotFound, Profile, Trash} from "./pages";
+import {Archive, Label, Landing, Login, Notes, NotFound, Profile, Signup, Trash} from "./pages";
 import { Navbar, Sidebar } from './components';
 
 function App() {
@@ -22,6 +22,8 @@ function App() {
           <Route path='/archive' element={<Archive/>} />
           <Route path='/trash' element={<Trash/>} />
           <Route path='/profile' element={<Profile/>} />
+          <Route path='/login' element={<Login/>} />
+          <Route path='/signup' element={<Signup/>} />
         </Routes>
       </div>
     </div>
