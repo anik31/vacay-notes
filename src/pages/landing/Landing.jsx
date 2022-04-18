@@ -1,8 +1,11 @@
 import "./landing.css";
 import {logo, hero} from "../../assets";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context";
 
 export function Landing(){
+    const {isLoggedIn} = useAuth();
+
     return (
         <div className="landing-container">
             <header>
@@ -18,7 +21,7 @@ export function Landing(){
                         </div>
                         <p>Manage your daily tasks and workflow in a modern way and boost your efficiency without any efforts.</p>
                     </div>
-                    <Link to="/home" className="btn btn-primary">Join Now</Link>
+                    <Link to={isLoggedIn ? "/home" : "/login"} className="btn btn-primary">Join Now</Link>
                 </div>
                 <div className="img-wrapper">
                     <img src={hero} className="img-responsive" alt="hero" />

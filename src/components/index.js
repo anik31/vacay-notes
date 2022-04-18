@@ -7,3 +7,5 @@ export {AddLabel} from "./AddLabelModal/AddLabelModal";
 export {FilterModal} from "./FilterModal/FilterModal";
 export {EmptyPage} from "./EmptyPage";
 export {Note} from "./DisplayNote/Note";
+export {RequireAuth} from "./RequireAuth";
+export {NavigateFromAuth} from "./NavigateFromAuth";

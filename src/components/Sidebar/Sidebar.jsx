@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../../context";
 import "./sidebar.css";
 
 const sidebarData = [
@@ -13,6 +14,8 @@ const getActiveStyle = ({ isActive }) => ({
 });
 
 export function Sidebar(){
+    const {logoutUser} = useAuth();
+
     return (
         <nav className="sidebar">
             <ul>
@@ -46,7 +49,7 @@ export function Sidebar(){
                     <i className="fas fa-user"></i>
                     <span>Username</span>
                 </Link>
-                <button title="Logout" className="btn-icon"><i className="fas fa-sign-out-alt"></i></button>
+                <button title="Logout" onClick={()=>logoutUser()} className="btn-icon"><i className="fas fa-sign-out-alt"></i></button>
             </div>
         </nav>
     );

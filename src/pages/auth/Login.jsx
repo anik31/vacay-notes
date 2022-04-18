@@ -1,16 +1,18 @@
 import "./auth.css";
 import {Link} from "react-router-dom";
 import {useState} from "react";
+import { useAuth } from "../../context";
 
 export function Login(){
+    const {loginUser} = useAuth();
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [credentials, setCredentials] = useState({
         email: "",
         password: ""
     });
     const testCredentials = {
-        email: "johndoe@gmail.com",
-        password: "johnDoe123"
+        email: "hello@world.com",
+        password: "helloworld"
     };
     const [errMsg, setErrMsg] = useState("");
 
@@ -19,6 +21,8 @@ export function Login(){
     const loginHandler = () => {
         if(!credentials.email || !credentials.password){
             setErrMsg("Enter credentials");
+        }else{
+            loginUser(credentials.email, credentials.password);
         }
     }
 
