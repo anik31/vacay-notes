@@ -1,13 +1,16 @@
 import "./profile.css";
+import {useAuth} from "../../../context";
 
 export function Profile(){
+    const {logoutUser} = useAuth();
+
     return (
         <div className="profile">
             <div>
                 <span className="avatar avatar-md avatar-text">AP</span>
                 <h3>Aniket Prakash</h3>
                 <span>aniket@gmail.com</span>
-                <button className="btn btn-primary-outline">LOGOUT</button>
+                <button onClick={()=>logoutUser()} className="btn btn-primary-outline">LOGOUT</button>
             </div>
             <div>
                 <h4 className="text-center">Total Notes</h4>

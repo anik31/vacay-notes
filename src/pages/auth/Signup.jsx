@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import "./auth.css";
 import {useState} from "react";
+import { useAuth } from "../../context";
 
 export function Signup(){
+    const {signUpUser} = useAuth();
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
     const [credentials, setCredentials] = useState({
@@ -22,6 +24,8 @@ export function Signup(){
             setErrMsg("Kindly fill all the fields");
         }else if(credentials.password !== confirmPass){
             setErrMsg("Passwords donot match");
+        }else{
+            signUpUser(credentials.email, credentials.password);
         }
     }
 
