@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { useAuth } from "../../context";
+import { useAuth, useNote } from "../../context";
 import "./sidebar.css";
 
 const sidebarData = [
@@ -15,6 +15,7 @@ const getActiveStyle = ({ isActive }) => ({
 
 export function Sidebar(){
     const {logoutUser} = useAuth();
+    const {noteState} = useNote();
 
     return (
         <nav className="sidebar">
@@ -30,9 +31,8 @@ export function Sidebar(){
                         <i className="fas fa-tags"></i>
                         <span>Labels</span>
                     </NavLink>
-                    <ul className="label-list">        
-                        <li>Label1</li>
-                        <li>Label2</li>
+                    <ul className="label-list"> 
+                        {noteState.labels.map(label=><li key={label}>{label}</li>)}       
                     </ul>
                 </li>
             {sidebarData.map(item=>

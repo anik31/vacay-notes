@@ -5,7 +5,7 @@ import { Navbar, NavigateFromAuth, RequireAuth, Sidebar } from './components';
 
 function App() {
   const {pathname} = useLocation();
-
+  
   return (
     <div className="App">
       {pathname!=="/" && <Navbar/>}
