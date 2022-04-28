@@ -4,8 +4,7 @@ const getCurrentDateTime = () => {
       today.getMonth() + 1
     }-${today.getDate()}`;
     const time = `${today.getHours()}:${today.getMinutes()}`;
-    const dateTime = `${date} ${time}`;
-    return dateTime;
+    return `${date} ${time}`;
   };
   
   export { getCurrentDateTime };

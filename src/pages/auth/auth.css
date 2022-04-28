@@ -10,6 +10,10 @@
     min-height: 85vh;
 }
 
+form.form input[type="email"],form.form input[type="password"]{
+    margin: 0;
+}
+
 .input-link-grp{
     justify-content: space-between;
     width: 100%;

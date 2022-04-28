@@ -14,7 +14,7 @@ const getActiveStyle = ({ isActive }) => ({
 });
 
 export function Sidebar(){
-    const {logoutUser} = useAuth();
+    const {logoutUser, user} = useAuth();
     const {noteState} = useNote();
 
     return (
@@ -23,7 +23,7 @@ export function Sidebar(){
                 <li>
                     <NavLink style={getActiveStyle} to="/home" className="nav-item">
                         <i className="fas fa-lightbulb"></i>
-                        <span>Home</span>
+                        <span>Notes</span>
                     </NavLink>
                 </li>
                 <li>
@@ -47,7 +47,7 @@ export function Sidebar(){
             <div className="nav-item">
                 <Link to="/profile" className="user">
                     <i className="fas fa-user"></i>
-                    <span>Username</span>
+                    {user && <span>Hello, {user.email.split("@")[0]}</span>}
                 </Link>
                 <button title="Logout" onClick={()=>logoutUser()} className="btn-icon"><i className="fas fa-sign-out-alt"></i></button>
             </div>

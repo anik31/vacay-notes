@@ -2,10 +2,12 @@ import './styles.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import {Archive, Label, Landing, Login, Notes, NotFound, Profile, Signup, Trash} from "./pages";
 import { Navbar, NavigateFromAuth, RequireAuth, Sidebar } from './components';
+import {useScrollToTop} from "./hooks";
 
 function App() {
   const {pathname} = useLocation();
-  
+  useScrollToTop();
+
   return (
     <div className="App">
       {pathname!=="/" && <Navbar/>}

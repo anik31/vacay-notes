@@ -1,8 +1,8 @@
 import { useNote } from "../../context";
 import "./label.css";
 
-export function LabelModal({setIsLabelModalOpen, note, setNote}){
-    const {noteState} = useNote();
+export function LabelModal({setIsLabelModalOpen}){
+    const {noteState, note, setNote} = useNote();
 
     const addLabelToNoteHandler = (e) => {
         const targetLabel = e.target.dataset.label;

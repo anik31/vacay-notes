@@ -1,8 +1,10 @@
+import { useNote } from "../../context";
 import "./colorPallete.css";
 
 const colorPallete = ["#fff","#fecaca","#fde68a","#d9f99d"]
 
-export function ColorPallete({setIsColorPalleteOpen, setNote}){
+export function ColorPallete({setIsColorPalleteOpen}){
+    const {setNote} = useNote();
 
     const colorPalleteHandler = (e) =>{
         setIsColorPalleteOpen(false);

@@ -11,14 +11,18 @@ export function Login(){
         password: ""
     });
     const testCredentials = {
-        email: "hello@world.com",
-        password: "helloworld"
+        email: "johndoe@gmail.com",
+        password: "johnDoe123"
     };
     const [errMsg, setErrMsg] = useState("");
 
-    const passwordVisibilityHandler = () => setIsPasswordVisible(prev=> !prev);
+    const passwordVisibilityHandler = (e) => {
+        e.preventDefault();
+        setIsPasswordVisible(prev=> !prev);
+    };
 
-    const loginHandler = () => {
+    const loginHandler = (e) => {
+        e.preventDefault();
         if(!credentials.email || !credentials.password){
             setErrMsg("Enter credentials");
         }else{
@@ -26,9 +30,14 @@ export function Login(){
         }
     }
 
+    const enterGuestCredentials = (e) => {
+        e.preventDefault();
+        setCredentials(testCredentials);
+    }
+
     return (
         <div className="container-auth">
-            <div className="form box-shadow">
+            <form className="form box-shadow">
             <h3>Login</h3>
             {errMsg && <p className="err-msg">{errMsg}</p>}
             <div className="input input-text">
@@ -55,9 +64,9 @@ export function Login(){
                 <button className="btn btn-primary-link">Forgot your Password?</button>
             </div>
             <button className="btn btn-primary" onClick={loginHandler} >Login</button>
-            <button className="btn btn-primary-outline" onClick={()=>setCredentials(testCredentials)}>Use Guest Credentials</button>
+            <button className="btn btn-primary-outline" onClick={enterGuestCredentials}>Use Guest Credentials</button>
             <Link to="/signup" className="btn btn-secondary-icon-text-no-border">Create New Account <i className="fas fa-chevron-right"></i></Link>
-            </div>
+            </form>
         </div>
     );
 }

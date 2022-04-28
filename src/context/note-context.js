@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import { createContext, useContext, useReducer, useEffect, useState } from "react";
 import {db} from "../config/firebase-config";
 import {
     updateDoc,
@@ -11,6 +11,7 @@ import {
   } from "firebase/firestore";
   import {noteReducer} from "../reducer";
 import {useAuth} from "./auth-context";
+import { getCurrentDateTime } from "../utils";
 
 const NoteContext = createContext(null);
 
@@ -24,9 +25,23 @@ const initialState = {
     }
 };
 
+const initialNoteState = {
+    title:"",
+    content:"",
+    isPinned: false,        
+    labels: [],
+    priority: {name:"",value:null},
+    color: "#fff",
+    created: getCurrentDateTime()
+};
+
 const NoteProvider = ({ children }) => {
     const [noteState, noteDispatch] = useReducer(noteReducer, initialState);
     const {user} = useAuth();
+    const [prevNote, setPrevNote] = useState({});
+    const [note, setNote] = useState(initialNoteState);
+    const [isNoteUpdate, setIsNoteUpdate] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     useEffect(() => {
         if (user) {
@@ -99,7 +114,13 @@ const NoteProvider = ({ children }) => {
     };
 
     return (
-        <NoteContext.Provider value={{ noteState, noteDispatch, addNote, updateNote, deleteNoteFromNotes, addLabel }}>
+        <NoteContext.Provider value={{ 
+            noteState, noteDispatch, 
+            note, setNote, initialNoteState,
+            prevNote, setPrevNote, 
+            isExpanded, setIsExpanded,
+            isNoteUpdate, setIsNoteUpdate, 
+            addNote, updateNote, deleteNoteFromNotes, addLabel }}>
             {children}
         </NoteContext.Provider>
     );

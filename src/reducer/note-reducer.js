@@ -14,8 +14,8 @@ export function noteReducer(state, action){
                 ...state.filters,
                 sortByPriority: action.payload
             }};
-        case "FILTER_BY_CATEGORY":
-            return state.filters.category.includes(action.payload)
+        case "FILTER_BY_LABEL":
+            return state.filters.label.includes(action.payload)
                 ?{...state, filters: {
                     ...state.filters,
                     label:[...state.filters.label].filter(item=>item!==action.payload)

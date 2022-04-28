@@ -4,37 +4,34 @@ import {filledPin, outlinePin} from "../../assets";
 import { ColorPallete } from "../ColorPallete/ColorPallete";
 import { LabelModal } from "../Label/Label";
 import { useNote } from "../../context";
-import {getCurrentDateTime} from "../../utils";
-
-const initialNoteState = {
-    title:"",
-    content:"",
-    isPinned: false,        
-    labels: [],
-    priority: "",
-    color: "#fff",
-    created: getCurrentDateTime()
-};
 
 export function CreateNote(){
-    const [isExpanded, setIsExpanded] = useState(false);
     const [isColorPalleteOpen, setIsColorPalleteOpen] = useState(false);
     const [isLabelModalOpen, setIsLabelModalOpen] = useState(false);
-    const [note, setNote] = useState(initialNoteState);
-    const {addNote} = useNote();
-
+    const {addNote, updateNote,
+        isExpanded, setIsExpanded,
+        note, setNote, initialNoteState, 
+        prevNote, setPrevNote,
+        isNoteUpdate, setIsNoteUpdate} = useNote();
+    
     const pinHandler = () => {
         setNote(prev=>({...prev,isPinned:!prev.isPinned}));
     }
 
     const closeCreateNoteHandler = () => {
+        setIsExpanded(false);
         setNote(initialNoteState);
-        setIsExpanded(false)
+        setIsNoteUpdate(false);
+        setPrevNote(false);
     }
 
     const createNoteHandler = () => {
         if(note.title!=="" || note.content!==""){
-            addNote(note);
+            if(isNoteUpdate){
+                updateNote({id:prevNote.id, ...note})
+            }else{
+                addNote(note);
+            }
             closeCreateNoteHandler();
         }
     }
@@ -49,8 +46,23 @@ export function CreateNote(){
         setIsColorPalleteOpen(prev=>!prev);
     }
 
+    const priorityHandler = e => {
+        const priorityName = e.target.value;
+        let priorityValue;
+
+        if(priorityName==="Low"){
+            priorityValue=0;
+        }else if(priorityName==="Medium"){
+            priorityValue=1;
+        }else if(priorityName==="High"){
+            priorityValue=2;
+        }
+        
+        setNote(prev=>({...prev,priority:{...prev.priority, name: priorityName, value: priorityValue}}));
+    }
+
     return (
-        <div className=" create-note" style={{backgroundColor:note.color}}>
+        <div className=" create-note" style={{backgroundColor: note.color}}>
             {isExpanded && 
             (note.isPinned 
             ? <img src={filledPin} title="Unpin Note" className="btn-pin" alt="pin" onClick={pinHandler} />
@@ -73,7 +85,7 @@ export function CreateNote(){
 
             {isExpanded && <footer className="note-tools">
                 <div>
-                    <select defaultValue="" onChange={(e)=>setNote(prev=>({...prev,priority:e.target.value}))}>
+                    <select defaultValue="" onChange={priorityHandler}>
                         <option value="" disabled hidden>Priority</option>
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
@@ -82,11 +94,11 @@ export function CreateNote(){
 
                     <button className="btn-icon" title="Add Labels" onClick={labelHandler}><i className="fas fa-tags"></i></button>
                     
-                    {isLabelModalOpen && <LabelModal note={note} setNote={setNote} setIsLabelModalOpen={setIsLabelModalOpen} />}
+                    {isLabelModalOpen && <LabelModal setIsLabelModalOpen={setIsLabelModalOpen} />}
                     
                     <button className="btn-icon" title="Add background color" onClick={colorPalleteHandler}><i className="fas fa-palette"></i></button>
                     
-                    {isColorPalleteOpen && <ColorPallete setNote={setNote} setIsColorPalleteOpen={setIsColorPalleteOpen} />}
+                    {isColorPalleteOpen && <ColorPallete setIsColorPalleteOpen={setIsColorPalleteOpen} />}
                 </div>
                 <div>
                     <button className="btn btn-primary-outline" onClick={closeCreateNoteHandler}>Close</button>

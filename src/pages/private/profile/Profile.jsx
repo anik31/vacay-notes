@@ -1,15 +1,19 @@
 import "./profile.css";
-import {useAuth} from "../../../context";
+import {useArchive, useAuth, useNote, useTrash} from "../../../context";
 
 export function Profile(){
-    const {logoutUser} = useAuth();
+    const {logoutUser, user} = useAuth();
+    const {noteState: {notes}} = useNote();
+    const {archiveState} = useArchive();
+    const {trashState} = useTrash();
+
+    const avatarText = user.email.split("@")[0][0];
 
     return (
         <div className="profile">
             <div>
-                <span className="avatar avatar-md avatar-text">AP</span>
-                <h3>Aniket Prakash</h3>
-                <span>aniket@gmail.com</span>
+                <span className="avatar avatar-md avatar-text">{avatarText}</span>
+                <h3>{user.email}</h3>
                 <button onClick={()=>logoutUser()} className="btn btn-primary-outline">LOGOUT</button>
             </div>
             <div>
@@ -17,19 +21,19 @@ export function Profile(){
                 <ul>
                     <li>
                         <span>Pinned : </span>
-                        <span>2</span>
+                        <span>{notes.filter(note=>note.isPinned).length}</span>
                     </li>
                     <li>
                         <span>Un-Pinned : </span>
-                        <span>4</span>
+                        <span>{notes.filter(note=>!note.isPinned).length}</span>
                     </li>
                     <li>
                         <span>Archived : </span>
-                        <span>2</span>
+                        <span>{archiveState.length}</span>
                     </li>
                     <li>
                         <span>In trash : </span>
-                        <span>2</span>
+                        <span>{trashState.length}</span>
                     </li>
                 </ul>
             </div>
