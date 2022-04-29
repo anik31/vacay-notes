@@ -20,17 +20,17 @@
 
 .user{
     display: flex;
-    gap: 0.5rem;
+    gap: 0.3rem;
     color: var(--text-color);
+}
+
+.user span{
+    width: 12ch;
 }
 
 .sidebar button{
     font-size: 1.5rem;
     background-color: transparent;
-}
-
-.sidebar>div.nav-item{
-    gap: 2rem;
 }
 
 .label-list{

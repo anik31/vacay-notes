@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { useAuth } from "../../context";
+import { useAuth, useNote } from "../../context";
 import "./sidebar.css";
 
 const sidebarData = [
@@ -14,7 +14,8 @@ const getActiveStyle = ({ isActive }) => ({
 });
 
 export function Sidebar(){
-    const {logoutUser} = useAuth();
+    const {logoutUser, user} = useAuth();
+    const {noteState} = useNote();
 
     return (
         <nav className="sidebar">
@@ -22,7 +23,7 @@ export function Sidebar(){
                 <li>
                     <NavLink style={getActiveStyle} to="/home" className="nav-item">
                         <i className="fas fa-lightbulb"></i>
-                        <span>Home</span>
+                        <span>Notes</span>
                     </NavLink>
                 </li>
                 <li>
@@ -30,9 +31,8 @@ export function Sidebar(){
                         <i className="fas fa-tags"></i>
                         <span>Labels</span>
                     </NavLink>
-                    <ul className="label-list">        
-                        <li>Label1</li>
-                        <li>Label2</li>
+                    <ul className="label-list"> 
+                        {noteState.labels.map(label=><li key={label}>{label}</li>)}       
                     </ul>
                 </li>
             {sidebarData.map(item=>
@@ -47,7 +47,7 @@ export function Sidebar(){
             <div className="nav-item">
                 <Link to="/profile" className="user">
                     <i className="fas fa-user"></i>
-                    <span>Username</span>
+                    {user && <span>Hello, {user.email.split("@")[0]}</span>}
                 </Link>
                 <button title="Logout" onClick={()=>logoutUser()} className="btn-icon"><i className="fas fa-sign-out-alt"></i></button>
             </div>

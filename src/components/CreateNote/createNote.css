@@ -12,6 +12,7 @@
     border: none;
     outline: none;
     padding: 0.8rem;
+    background-color: transparent;
 }
 
 .create-note textarea{
@@ -50,10 +51,13 @@
     position: absolute;
     right: 1rem;
     top: 1rem;
+    cursor: pointer;
+    width: 0.65rem;
 }
 
 .note-tools select{
     border: none;
     outline: none;
     cursor: pointer;
+    background-color: transparent;
 }

@@ -1,17 +1,27 @@
+import { useNote } from "../../context";
 import "./label.css";
 
 export function LabelModal({setIsLabelModalOpen}){
+    const {noteState, note, setNote} = useNote();
+
+    const addLabelToNoteHandler = (e) => {
+        const targetLabel = e.target.dataset.label;
+        if(note.labels.includes(targetLabel)){
+            setNote(prev=>({...prev, labels: prev.labels.filter(item=>item!==targetLabel)}))
+        }else{
+            setNote(prev=>({...prev, labels: prev.labels.concat(targetLabel)}));
+        }
+    }
+
     return (
-        <div className="label-modal">
+        <div className="label-select">
             <h4>Label</h4>
+            <i className="fas fa-times" onClick={()=>setIsLabelModalOpen(false)}></i>
             <ul>
-                <li><label><input type="checkbox"/>label1</label></li>
-                <li><label><input type="checkbox"/>label2</label></li>
+                {noteState.labels.map(label=>
+                    <li key={label}><label><input data-label={label} type="checkbox" checked={note.labels.includes(label)} onChange={addLabelToNoteHandler} />{label}</label></li>
+                )}
             </ul>
-            <div className="input-btn-wrapper">
-                <input type="text" placeholder="Label" />    
-                <button className="btn btn-primary-outline" onClick={()=>setIsLabelModalOpen(false)}>Add</button>
-            </div>
         </div>
     );
 }

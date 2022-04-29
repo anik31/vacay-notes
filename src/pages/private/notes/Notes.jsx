@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { CreateNote, AddLabel, FilterModal, Note } from "../../../components";
+import { useNote } from "../../../context";
 import "./notes.css";
+import { getFilteredNotes } from "../../../utils";
 
 export function Notes(){
     const [isFilterVisible, setIsFilterVisible] = useState(false);
     const [isLabelModalVisible, setIsLabelModalVisible] = useState(false);
+    const {noteState: {notes, filters: {sortByDate, sortByPriority, label}}} = useNote();
+
+    const filteredNotes = getFilteredNotes(notes, sortByDate, sortByPriority, label);
 
     return (
         <div>
@@ -19,18 +24,21 @@ export function Notes(){
                     Add Label</button>
                 </div>
             </div>
-            <h4 className="align-subtitle">Pinned Notes</h4>
-            <div className="notes-container">
-                <Note/>
-                <Note/>
-                <Note/>
+            
+            <h3 className="align-subtitle">Pinned Notes</h3>
+            {filteredNotes.some(note=>note.isPinned)
+            ? <div className="notes-container">
+                {filteredNotes.filter(note=>note.isPinned).map(note=><Note key={note.id} value={note}/>)}
             </div>
-            <h4 className="align-subtitle">Others</h4>
-            <div className="notes-container m-b-4">
-                <Note/>
-                <Note/>
-                <Note/>
+            : <p className="not-found">No Pinned notes found.</p> }
+            
+            <h3 className="align-subtitle">Others</h3>
+            {filteredNotes.some(note=>!note.isPinned)
+            ? <div className="notes-container m-b-4">
+                {filteredNotes.filter(note=>!note.isPinned).map(note=><Note key={note.id} value={note}/>)}
             </div>
+            : <p className="not-found">No notes found.</p> }
+
             {isFilterVisible && <FilterModal setIsFilterVisible={setIsFilterVisible} />}
             {isLabelModalVisible && <AddLabel setIsLabelModalVisible={setIsLabelModalVisible} />}
         </div>

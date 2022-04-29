@@ -4,6 +4,7 @@
 
 .header .search-box{
     flex-basis: 40rem;
+    border-width: 1px;
 }
 
 .header{
