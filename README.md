@@ -29,9 +29,8 @@ https://user-images.githubusercontent.com/56336326/165702619-cd2f87fb-321e-45cf-
     - Delete/Restore/Permanent-delete notes
 - Authentication
     - Sign up
-    - Login
+    - Login (Persisting)
     - Logout
-    - Persisting login
 - Mobile Responsive
 ## Tech stack
 - ReactJS
