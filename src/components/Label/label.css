@@ -5,9 +5,9 @@
     flex-direction: column;
     padding: 0.2rem;
     position: absolute;
-    bottom: -6.5rem;
-    width: 6rem;
-    height: 7rem;
+    bottom: -7.5rem;
+    width: 8rem;
+    height: 8rem;
     left: 4rem;
     border: 1px solid var(--lynx-gray-color);
     z-index: var(--z-index-2);
@@ -18,15 +18,9 @@ div.label-select {
     gap: 0.2rem !important;
 } 
 
-.label-select .fa-times{
-    position: absolute;
-    top: 0.3rem;
-    right: 0.4rem;
-    cursor: pointer;
-}
-
 .label-select ul{
     list-style: none;
+    word-wrap: break-all;
 }
 
 .label-select label{
@@ -34,6 +28,13 @@ div.label-select {
     align-items: center;
     gap: 0.2rem;
     cursor: pointer;
+}
+
+.label-select ul li label span{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex-shrink: 9;
 }
 
 .label-select input[type="checkbox"]{

@@ -46,7 +46,7 @@ export function FilterModal({setIsFilterVisible}){
                     {labels.map(labelItem=><li key={labelItem} className="input">
                     <label><input type="checkbox" checked={label.includes(labelItem)} 
                         onChange={()=>noteDispatch({type:"FILTER_BY_LABEL", payload:labelItem})}
-                    />{labelItem}</label></li>)}
+                    /><span>{labelItem}</span></label></li>)}
                 </ul>
                 <div className="input-btn-wrapper">
                     <button className="btn btn-primary-outline" onClick={clearFilterHandler}>Clear All Filters</button>
