@@ -20,9 +20,11 @@ export function CreateNote(){
 
     const closeCreateNoteHandler = () => {
         setIsExpanded(false);
-        setNote(initialNoteState);
         setIsNoteUpdate(false);
         setPrevNote(false);
+        setIsColorPalleteOpen(false);
+        setIsLabelModalOpen(false);
+        setNote(initialNoteState);
     }
 
     const createNoteHandler = () => {
