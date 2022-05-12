@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       {pathname!=="/" && <Navbar/>}
-        <ToastContainer theme="colored" autoClose={2000} position="top-right"/>
+        <ToastContainer theme="light" autoClose={2000} position="top-right"/>
 
       <div className={(pathname!=="/" && pathname!=="/login" 
       && pathname!=="/signup" && "sidebar-container") || ""}>

@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
   
   const loginUser = async(email, password) => {
     await signInWithEmailAndPassword(auth, email, password);
-    toast.success("Welcome back, you are logged in!!");
+    toast.success("Welcome back!!");
     setIsLoggedIn(true);
     navigate(location?.state?.from?.pathname || "/home");
   };
