@@ -47,7 +47,7 @@ export function Sidebar(){
             <div className="nav-item">
                 <Link to="/profile" className="user">
                     <i className="fas fa-user"></i>
-                    {user && <span>Hello, {user.email.split("@")[0]}</span>}
+                    {user && <span>{user.email.split("@")[0]}</span>}
                 </Link>
                 <button title="Logout" onClick={()=>logoutUser()} className="btn-icon"><i className="fas fa-sign-out-alt"></i></button>
             </div>
