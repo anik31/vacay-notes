@@ -2,6 +2,8 @@ export function noteReducer(state, action){
     switch(action.type){
         case "SET_NOTES":
             return {...state, notes: action.payload};
+        case "SET_SEARCH_TERM":
+            return {...state, searchTerm: action.payload};
         case "SET_LABELS":
             return {...state, labels: action.payload};
         case "SORT_NOTES_BY_DATE":

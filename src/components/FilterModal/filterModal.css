@@ -3,6 +3,7 @@
     height: fit-content;
     align-items: flex-start;
     padding: 1rem;
+    max-height: 95vh;
 }
 
 .filter-modal hr{
@@ -12,6 +13,14 @@
 
 .filter-modal ul{
     list-style: none;
+    max-width: 18rem;  
+    overflow-y: auto;
+}
+
+.filter-modal ul li label span{
+    inline-size: 15rem;
+    overflow-wrap: break-word;
+    margin: 0.3rem 0;
 }
 
 .filter-modal .input-grp, .filter-modal .input-btn-wrapper{

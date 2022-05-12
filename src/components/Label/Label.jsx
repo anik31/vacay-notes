@@ -16,10 +16,15 @@ export function LabelModal({setIsLabelModalOpen}){
     return (
         <div className="label-select">
             <h4>Label</h4>
-            <i className="fas fa-times" onClick={()=>setIsLabelModalOpen(false)}></i>
             <ul>
                 {noteState.labels.map(label=>
-                    <li key={label}><label><input data-label={label} type="checkbox" checked={note.labels.includes(label)} onChange={addLabelToNoteHandler} />{label}</label></li>
+                    <li key={label}>
+                        <label>
+                            <input data-label={label} type="checkbox" checked={note.labels.includes(label)} 
+                            onChange={addLabelToNoteHandler} />
+                            <span>{label}</span>
+                        </label>
+                    </li>
                 )}
             </ul>
         </div>

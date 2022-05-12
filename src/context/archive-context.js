@@ -9,6 +9,7 @@ import {
   } from "firebase/firestore";
   import {archiveReducer} from "../reducer";
   import {useAuth} from "./auth-context";
+  import { toast } from "react-toastify";  
 
 const ArchiveContext = createContext(null);
 
@@ -38,6 +39,7 @@ const ArchiveProvider = ({ children }) => {
     const archiveNote = async(note) => {
         try{
             await deleteDoc(doc(db, "users", `${user.uid}`, "notes", note.id));
+            toast.success("Note archived"); 
             await addDoc(collection(db, "users", `${user.uid}`, "archive"), note);
         }
         catch(err){
@@ -48,6 +50,7 @@ const ArchiveProvider = ({ children }) => {
     const unarchiveNote = async(note) => {
         try{
             await deleteDoc(doc(db, "users", `${user.uid}`, "archive", note.id));
+            toast.success("Note un-archived"); 
             await addDoc(collection(db, "users", `${user.uid}`, "notes"), note);
         }
         catch(err){
@@ -58,6 +61,7 @@ const ArchiveProvider = ({ children }) => {
     const deleteNoteFromArchive = async(note) => {
         try{
             await deleteDoc(doc(db, "users", `${user.uid}`, "archive", note.id));
+            toast.warning("Note deleted"); 
             await addDoc(collection(db, "users", `${user.uid}`, "trash"), note);
         }
         catch(err){

@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-y: auto;
 }
 
 .sidebar .nav-item{
@@ -12,7 +13,7 @@
     align-items: center;
     gap: 1rem;
     padding: 0.8rem 2.5rem 0.8rem 1.5rem;
-    margin: 1rem 2rem 1rem 1rem;
+    margin: 1rem;
     font-size: 1.2rem;
     color: var(--text-color);
     border-radius: var(--border-radius);
@@ -20,12 +21,12 @@
 
 .user{
     display: flex;
-    gap: 0.3rem;
+    gap: 0.5rem;
     color: var(--text-color);
 }
 
 .user span{
-    width: 12ch;
+    width: 8ch;
 }
 
 .sidebar button{
@@ -40,6 +41,13 @@
     justify-content: center;
     margin-left: 5rem;
     gap: 0.5rem;
+    max-width: 8rem;
+}
+
+.label-list li{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 @media only screen and (max-width:900px) {
@@ -52,6 +60,7 @@
         z-index: 20;
         background-color: white;
         border-top: 1px solid var(--lynx-gray-color);
+        height: fit-content;
     }
 
     .sidebar ul{

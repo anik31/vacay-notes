@@ -8,12 +8,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    word-break: break-all;
 }
 
 .note p{
     margin: 0.5rem 0;
-    width: 33ch;
+    width: 32ch;
+}
 
+.note h4{
+    width: 30ch;
 }
 
 .note .note-tools{
@@ -32,15 +36,16 @@
 .label-pills{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin: 1rem 0;
+    gap: 1rem;
 }
 
 .label-pills div{
     display: flex;
+    flex-wrap: wrap;
     gap: 0.2rem;
-    justify-content: center;
     align-items: center;
+    max-width: 80%;
 }
 
 .label-pills span{
@@ -48,4 +53,9 @@
     background-color: var(--lynx-gray-color);
     border-radius: 1rem;
     padding: 0.2rem 0.4rem;
+    height: fit-content;
+    max-width: 5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
