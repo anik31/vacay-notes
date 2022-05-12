@@ -12,6 +12,7 @@ import {
   import {noteReducer} from "../reducer";
 import {useAuth} from "./auth-context";
 import { getCurrentDateTime } from "../utils";
+import { toast } from "react-toastify";
 
 const NoteContext = createContext(null);
 
@@ -79,6 +80,7 @@ const NoteProvider = ({ children }) => {
     const addNote = async(note) => {
         try{
             await addDoc(collection(db, "users", `${user.uid}`, "notes"), note);
+            toast.success("Note created"); 
         }
         catch(err){
             console.error(err);
@@ -88,6 +90,7 @@ const NoteProvider = ({ children }) => {
     const updateNote = async(note) => {
         try{
             await updateDoc(doc(db, "users", `${user.uid}`, "notes", note.id), note);
+            toast.success("Note updated"); 
         }
         catch(err){
             console.error(err);
@@ -96,8 +99,10 @@ const NoteProvider = ({ children }) => {
   
     const deleteNoteFromNotes = async(note) => {
         try{
+            
             await deleteDoc(doc(db, "users", `${user.uid}`, "notes", note.id));
-            await addDoc(collection(db, "users", `${user.uid}`, "trash"), note);
+            toast.warning("Note deleted"); 
+            await addDoc(collection(db, "users", `${user.uid}`, "trash"), note);    
         }
         catch(err){
             console.error(err);
@@ -108,6 +113,7 @@ const NoteProvider = ({ children }) => {
         const labelRef = doc(db, "users", `${user.uid}`);
         try{
             await setDoc(labelRef, {labels: noteState.labels?[...noteState.labels,label]:[label]});
+            toast.success("Label created"); 
         }
         catch(err){
             console.error(err);
