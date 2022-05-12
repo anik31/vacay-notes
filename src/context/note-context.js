@@ -17,6 +17,7 @@ const NoteContext = createContext(null);
 
 const initialState = {
     notes:[],
+    searchTerm: "",
     labels:[],
     filters: {
         sortByDate: "",
