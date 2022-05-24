@@ -23,6 +23,7 @@ https://user-images.githubusercontent.com/56336326/165702619-cd2f87fb-321e-45cf-
 - Change Card Color
 - Add Labels to notes
 - Filter & Sort by date, priority, labels
+- Search notes
 - Pin/Unpin notes
 - Trash & Archive
     - Archive/Unarchive notes
