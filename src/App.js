@@ -1,7 +1,7 @@
 import './styles.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import {Archive, Label, Landing, Login, Notes, NotFound, Profile, Signup, Trash} from "./pages";
-import { Navbar, NavigateFromAuth, RequireAuth, Sidebar } from './components';
+import { Navbar, RestrictAuth, RequireAuth, Sidebar } from './components';
 import {useScrollToTop} from "./hooks";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,13 +21,17 @@ function App() {
         <Routes>
           <Route path='/' element={<Landing/>} />
           <Route path='*' element={<NotFound/>} />
-          <Route path='/home' element={<RequireAuth> <Notes/> </RequireAuth>} />
-          <Route path='/label' element={<RequireAuth> <Label/> </RequireAuth>} />
-          <Route path='/archive' element={<RequireAuth> <Archive/> </RequireAuth>} />
-          <Route path='/trash' element={<RequireAuth> <Trash/> </RequireAuth>} />
-          <Route path='/profile' element={<RequireAuth> <Profile/> </RequireAuth>} />
-          <Route path='/login' element={<NavigateFromAuth> <Login/> </NavigateFromAuth>} />
-          <Route path='/signup' element={<NavigateFromAuth> <Signup/> </NavigateFromAuth>} />
+          <Route element={<RequireAuth/>}>
+            <Route path='/home' element={<Notes/>} />
+            <Route path='/label' element={<Label/>} />
+            <Route path='/archive' element={<Archive/>} />
+            <Route path='/trash' element={<Trash/>} />
+            <Route path='/profile' element={<Profile/>} />
+          </Route>
+          <Route element={<RestrictAuth/>}>
+            <Route path='/login' element={<Login/>} />
+            <Route path='/signup' element={<Signup/>} />
+          </Route>
         </Routes>
       </div>
     </div>
