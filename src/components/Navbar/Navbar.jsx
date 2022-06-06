@@ -25,7 +25,10 @@ export function Navbar(){
                 <i className="fas fa-search"></i>
                 <input type="text" placeholder="Search" onChange={({target})=>setSearchVal(target.value)} />
             </div>}
-            <button title="Dark Mode" className="btn-icon"><i className="fas fa-moon"></i></button>
+            <div></div>
+
+            {/* TODO - To be implemented in the future...
+            <button title="Dark Mode" className="btn-icon"><i className="fas fa-moon"></i></button> */}
         </header>
     );
 }

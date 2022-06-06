@@ -9,3 +9,4 @@ export {EmptyPage} from "./EmptyPage";
 export {Note} from "./DisplayNote/Note";
 export {RequireAuth} from "./Routes/RequireAuth";
 export {RestrictAuth} from "./Routes/RestrictAuth";
+export {WithSidebar} from "./Routes/WithSidebar";
