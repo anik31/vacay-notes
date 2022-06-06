@@ -64,7 +64,7 @@ button{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--modal-background);
+    backdrop-filter: blur(2px);
     z-index: 15;
     display: flex;
     justify-content: center;
