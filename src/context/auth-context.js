@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useLayoutEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -50,12 +50,12 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, loggedInUser => setUser(loggedInUser));
     return () => unsubscribe();
   }, []);
 
-  useEffect(()=>{
+  useLayoutEffect(()=>{
     if(user){
       setIsLoggedIn(true);
     }

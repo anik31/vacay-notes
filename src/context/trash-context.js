@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import { createContext, useContext, useReducer, useLayoutEffect } from "react";
 import {db} from "../config/firebase-config";
 import {
     deleteDoc,
@@ -16,8 +16,8 @@ const TrashContext = createContext(null);
 const TrashProvider = ({ children }) => {
     const [trashState, trashDispatch] = useReducer(trashReducer, []);
     const {user} = useAuth();
-  
-    useEffect(() => {
+
+    useLayoutEffect(() => {
         if (user) {
             const unsubscribe = onSnapshot(
                 collection(db, "users", `${user.uid}`, "trash"),

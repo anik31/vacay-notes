@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect, useState } from "react";
+import { createContext, useContext, useReducer, useLayoutEffect, useState } from "react";
 import {db} from "../config/firebase-config";
 import {
     updateDoc,
@@ -45,7 +45,7 @@ const NoteProvider = ({ children }) => {
     const [isNoteUpdate, setIsNoteUpdate] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (user) {
             const unsubscribe1 = onSnapshot(
                 collection(db, "users", `${user.uid}`, "notes"),
