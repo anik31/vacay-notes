@@ -41,9 +41,8 @@ const TrashProvider = ({ children }) => {
             await deleteDoc(doc(db, "users", `${user.uid}`, "trash", note.id));
             toast.success("Note restored"); 
             await addDoc(collection(db, "users", `${user.uid}`, "notes"), note);
-        }
-        catch(err){
-            console.error(err);
+        }catch(err){
+            toast.error(err.message);
         }
     };
   
@@ -51,9 +50,8 @@ const TrashProvider = ({ children }) => {
         try{
             await deleteDoc(doc(db, "users", `${user.uid}`, "trash", note.id));
             toast.error("Note deleted permanently"); 
-        }
-        catch(err){
-            console.error(err);
+        }catch(err){
+            toast.error(err.message);
         }
     };
 

@@ -18,24 +18,36 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   
   const loginUser = async(email, password) => {
-    await signInWithEmailAndPassword(auth, email, password);
-    toast.success("Welcome back!!");
-    setIsLoggedIn(true);
-    navigate(location?.state?.from?.pathname || "/home");
+    try{
+      await signInWithEmailAndPassword(auth, email, password);
+      toast.success("Login successful");
+      setIsLoggedIn(true);
+      navigate(location?.state?.from?.pathname || "/home");
+    }catch(err){
+      toast.error(err.message);
+    }
   };
 
   const signUpUser = async(email, password) => {
-    await createUserWithEmailAndPassword(auth, email, password);
-    toast.success("Congrats, you have signed up successfully!!");
-    setIsLoggedIn(true);
-    navigate(location?.state?.from?.pathname || "/home");
+    try{
+      await createUserWithEmailAndPassword(auth, email, password);
+      toast.success("Signup successful");
+      setIsLoggedIn(true);
+      navigate(location?.state?.from?.pathname || "/home");
+    }catch(err){
+      toast.error(err.message);
+    }
   };
 
   const logoutUser = async() => {
-    await signOut(auth);
-    toast.success("Logged out successfully");
-    navigate("/");
-    setIsLoggedIn(false);
+    try{
+      await signOut(auth);
+      toast.info("Logged out");
+      navigate("/");
+      setIsLoggedIn(false);
+    }catch(err){
+      toast.error(err.message);
+    }
   };
 
   useEffect(() => {

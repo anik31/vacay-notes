@@ -39,11 +39,10 @@ const ArchiveProvider = ({ children }) => {
     const archiveNote = async(note) => {
         try{
             await deleteDoc(doc(db, "users", `${user.uid}`, "notes", note.id));
-            toast.success("Note archived"); 
+            toast.info("Note archived"); 
             await addDoc(collection(db, "users", `${user.uid}`, "archive"), note);
-        }
-        catch(err){
-            console.error(err);
+        }catch(err){
+            toast.error(err.message);
         }
     };
   
@@ -52,9 +51,8 @@ const ArchiveProvider = ({ children }) => {
             await deleteDoc(doc(db, "users", `${user.uid}`, "archive", note.id));
             toast.success("Note un-archived"); 
             await addDoc(collection(db, "users", `${user.uid}`, "notes"), note);
-        }
-        catch(err){
-            console.error(err);
+        }catch(err){
+            toast.error(err.message);
         }
     };
 
@@ -63,9 +61,8 @@ const ArchiveProvider = ({ children }) => {
             await deleteDoc(doc(db, "users", `${user.uid}`, "archive", note.id));
             toast.warning("Note deleted"); 
             await addDoc(collection(db, "users", `${user.uid}`, "trash"), note);
-        }
-        catch(err){
-            console.error(err);
+        }catch(err){
+            toast.error(err.message);
         }
     };
 
