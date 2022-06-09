@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       {pathname!=="/" && <Navbar/>}
-        <ToastContainer theme="light" autoClose={1000} position="top-right"/>
+        <ToastContainer theme="light" autoClose={2000} position="top-right"/>
         <Routes>
           <Route path='/' element={<Landing/>} />
           <Route element={<RequireAuth/>}>
