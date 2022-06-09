@@ -7,5 +7,6 @@ export {AddLabel} from "./AddLabelModal/AddLabelModal";
 export {FilterModal} from "./FilterModal/FilterModal";
 export {EmptyPage} from "./EmptyPage";
 export {Note} from "./DisplayNote/Note";
-export {RequireAuth} from "./RequireAuth";
-export {NavigateFromAuth} from "./NavigateFromAuth";
+export {RequireAuth} from "./Routes/RequireAuth";
+export {RestrictAuth} from "./Routes/RestrictAuth";
+export {WithSidebar} from "./Routes/WithSidebar";

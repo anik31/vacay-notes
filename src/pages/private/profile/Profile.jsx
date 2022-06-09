@@ -7,13 +7,13 @@ export function Profile(){
     const {archiveState} = useArchive();
     const {trashState} = useTrash();
 
-    const avatarText = user.email.split("@")[0][0];
+    const avatarText = user && user.email.split("@")[0][0];
 
     return (
         <div className="profile">
             <div>
                 <span className="avatar avatar-md avatar-text">{avatarText}</span>
-                <h3>{user.email}</h3>
+                <h3>{user && user.email}</h3>
                 <button onClick={()=>logoutUser()} className="btn btn-primary-outline">LOGOUT</button>
             </div>
             <div>

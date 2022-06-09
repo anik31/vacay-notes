@@ -28,6 +28,8 @@ export function Signup(){
         e.preventDefault();
         if(!credentials.email || !credentials.password || !confirmPass){
             setErrMsg("Kindly fill all the fields");
+        }else if(!(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/).test(credentials.email)){
+            setErrMsg("Invalid email");
         }else if(credentials.password !== confirmPass){
             setErrMsg("Passwords donot match");
         }else{

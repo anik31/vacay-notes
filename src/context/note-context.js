@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect, useState } from "react";
+import { createContext, useContext, useReducer, useLayoutEffect, useState } from "react";
 import {db} from "../config/firebase-config";
 import {
     updateDoc,
@@ -45,7 +45,7 @@ const NoteProvider = ({ children }) => {
     const [isNoteUpdate, setIsNoteUpdate] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (user) {
             const unsubscribe1 = onSnapshot(
                 collection(db, "users", `${user.uid}`, "notes"),
@@ -81,19 +81,16 @@ const NoteProvider = ({ children }) => {
         try{
             await addDoc(collection(db, "users", `${user.uid}`, "notes"), note);
             toast.success("Note created"); 
-        }
-        catch(err){
-            console.error(err);
+        }catch(err){
+            toast.error(err.message);
         }
     };
   
     const updateNote = async(note) => {
         try{
             await updateDoc(doc(db, "users", `${user.uid}`, "notes", note.id), note);
-            toast.success("Note updated"); 
-        }
-        catch(err){
-            console.error(err);
+        }catch(err){
+            toast.error(err.message);
         }
     };
   
@@ -103,9 +100,8 @@ const NoteProvider = ({ children }) => {
             await deleteDoc(doc(db, "users", `${user.uid}`, "notes", note.id));
             toast.warning("Note deleted"); 
             await addDoc(collection(db, "users", `${user.uid}`, "trash"), note);    
-        }
-        catch(err){
-            console.error(err);
+        }catch(err){
+            toast.error(err.message);
         }
     };
   
@@ -114,9 +110,8 @@ const NoteProvider = ({ children }) => {
         try{
             await setDoc(labelRef, {labels: noteState.labels?[...noteState.labels,label]:[label]});
             toast.success("Label created"); 
-        }
-        catch(err){
-            console.error(err);
+        }catch(err){
+            toast.error(err.message);
         }
     };
 

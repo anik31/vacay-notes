@@ -4,6 +4,7 @@ import {filledPin, outlinePin} from "../../assets";
 import { ColorPallete } from "../ColorPallete/ColorPallete";
 import { LabelModal } from "../Label/Label";
 import { useNote } from "../../context";
+import { toast } from "react-toastify";
 
 export function CreateNote(){
     const [isColorPalleteOpen, setIsColorPalleteOpen] = useState(false);
@@ -31,6 +32,7 @@ export function CreateNote(){
         if(note.title!=="" || note.content!==""){
             if(isNoteUpdate){
                 updateNote({id:prevNote.id, ...note})
+                toast.success("Note updated"); 
             }else{
                 addNote(note);
             }

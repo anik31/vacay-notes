@@ -30,9 +30,10 @@ export function Login(){
         }
     }
 
-    const enterGuestCredentials = (e) => {
+    const testLogin = (e) => {
         e.preventDefault();
         setCredentials(testCredentials);
+        loginUser(testCredentials.email, testCredentials.password);
     }
 
     return (
@@ -57,14 +58,8 @@ export function Login(){
                     </button>
                 </div>
             </div>
-            <div className="input-link-grp">
-                <div className="input input-checkbox-radio">
-                    <label><input type="checkbox" />Remember me</label>
-                </div>
-                <button className="btn btn-primary-link">Forgot your Password?</button>
-            </div>
             <button className="btn btn-primary" onClick={loginHandler} >Login</button>
-            <button className="btn btn-primary-outline" onClick={enterGuestCredentials}>Use Guest Credentials</button>
+            <button className="btn btn-primary-outline" onClick={testLogin}>Test Login</button>
             <Link to="/signup" className="btn btn-secondary-icon-text-no-border">Create New Account <i className="fas fa-chevron-right"></i></Link>
             </form>
         </div>
