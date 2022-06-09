@@ -1,0 +1,13 @@
+## changes made
+- Updated require & restrict auth  components
+- Fixed undefined issue on profile page for logout feature
+- Added toasts for error handling
+- Single click for test login, instead for entering guest credentials and then logging in
+- Added email validation using regex
+- Added backdrop-filter for modal background
+- Added debouncing for already implemented search
+- Change useEffect to useLayoutEffect
+- Change cards layout from auto-fit to auto-fill
+- Added nested routes & made a WithSidebar component
+- Commented dark mode button, it's to be implemented in future.
+- Updated toast timer
