@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import { createContext, useContext, useReducer, useEffect, useState } from "react";
 import {db} from "../config/firebase-config";
 import {
     deleteDoc,
@@ -16,19 +16,21 @@ const ArchiveContext = createContext(null);
 const ArchiveProvider = ({ children }) => {
     const [archiveState, archiveDispatch] = useReducer(archiveReducer, []);
     const {user} = useAuth();
+    const [isArchiveLoading, setIsArchiveLoading] = useState(true);
 
     useEffect(() => {
         if (user) {
             const unsubscribe = onSnapshot(
                 collection(db, "users", `${user.uid}`, "archive"),
                 (snapshot) => {
-                archiveDispatch({
-                    type: "SET_ARCHIVE",
-                    payload: snapshot.docs.map((doc) => ({
-                    ...doc.data(),
-                    id: doc.id,
+                    archiveDispatch({
+                        type: "SET_ARCHIVE",
+                        payload: snapshot.docs.map((doc) => ({
+                        ...doc.data(),
+                        id: doc.id,
                     })),
                 });
+                setIsArchiveLoading(false);
                 }
             );
 
@@ -67,7 +69,7 @@ const ArchiveProvider = ({ children }) => {
     };
 
     return (
-        <ArchiveContext.Provider value={{ archiveState, archiveDispatch, 
+        <ArchiveContext.Provider value={{ archiveState, archiveDispatch, isArchiveLoading,
         archiveNote, unarchiveNote, deleteNoteFromArchive }}>
             {children}
         </ArchiveContext.Provider>

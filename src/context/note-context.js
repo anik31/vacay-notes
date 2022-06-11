@@ -44,19 +44,21 @@ const NoteProvider = ({ children }) => {
     const [note, setNote] = useState(initialNoteState);
     const [isNoteUpdate, setIsNoteUpdate] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [isNotesLoading, setIsNotesLoading] = useState(true);
 
     useEffect(() => {
         if (user) {
             const unsubscribe1 = onSnapshot(
                 collection(db, "users", `${user.uid}`, "notes"),
                 (snapshot) => {
-                noteDispatch({
-                    type: "SET_NOTES",
-                    payload: snapshot.docs.map((doc) => ({
-                    ...doc.data(),
-                    id: doc.id,
-                    })),
-                });
+                    noteDispatch({
+                        type: "SET_NOTES",
+                        payload: snapshot.docs.map((doc) => ({
+                        ...doc.data(),
+                        id: doc.id,
+                        })),
+                    });
+                    setIsNotesLoading(false);
                 }
             );
 
@@ -117,7 +119,7 @@ const NoteProvider = ({ children }) => {
 
     return (
         <NoteContext.Provider value={{ 
-            noteState, noteDispatch, 
+            noteState, noteDispatch, isNotesLoading,
             note, setNote, initialNoteState,
             prevNote, setPrevNote, 
             isExpanded, setIsExpanded,

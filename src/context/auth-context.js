@@ -16,25 +16,30 @@ const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const [isAuthLoading, setIsAuthLoading] = useState(false);
   
   const loginUser = async(email, password) => {
     try{
+      setIsAuthLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Login successful");
       setIsLoggedIn(true);
       navigate(location?.state?.from?.pathname || "/home");
     }catch(err){
+      setIsAuthLoading(false);
       toast.error(err.message);
     }
   };
 
   const signUpUser = async(email, password) => {
     try{
+      setIsAuthLoading(true);
       await createUserWithEmailAndPassword(auth, email, password);
       toast.success("Signup successful");
       setIsLoggedIn(true);
       navigate(location?.state?.from?.pathname || "/home");
     }catch(err){
+      setIsAuthLoading(false);
       toast.error(err.message);
     }
   };
@@ -58,11 +63,12 @@ const AuthProvider = ({ children }) => {
   useEffect(()=>{
     if(user){
       setIsLoggedIn(true);
+      setIsAuthLoading(false);
     }
   },[user]);
 
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn, loginUser, signUpUser, logoutUser }}>
+    <AuthContext.Provider value={{ user, isLoggedIn, isAuthLoading, loginUser, signUpUser, logoutUser }}>
       {children}
     </AuthContext.Provider>
   );

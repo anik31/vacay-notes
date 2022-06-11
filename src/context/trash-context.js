@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import { createContext, useContext, useReducer, useEffect, useState } from "react";
 import {db} from "../config/firebase-config";
 import {
     deleteDoc,
@@ -16,19 +16,21 @@ const TrashContext = createContext(null);
 const TrashProvider = ({ children }) => {
     const [trashState, trashDispatch] = useReducer(trashReducer, []);
     const {user} = useAuth();
+    const [isTrashLoading, setIsTrashLoading] = useState(true);
 
     useEffect(() => {
         if (user) {
             const unsubscribe = onSnapshot(
                 collection(db, "users", `${user.uid}`, "trash"),
                 (snapshot) => {
-                trashDispatch({
-                    type: "SET_TRASH",
-                    payload: snapshot.docs.map((doc) => ({
-                    ...doc.data(),
-                    id: doc.id,
-                    })),
-                });
+                    trashDispatch({
+                        type: "SET_TRASH",
+                        payload: snapshot.docs.map((doc) => ({
+                        ...doc.data(),
+                        id: doc.id,
+                        })),
+                    });
+                    setIsTrashLoading(false);
                 }
             );
 
@@ -56,7 +58,8 @@ const TrashProvider = ({ children }) => {
     };
 
     return (
-        <TrashContext.Provider value={{ trashState, trashDispatch, restoreNote, deleteNotePermanently}}>
+        <TrashContext.Provider value={{ trashState, trashDispatch, isTrashLoading,
+        restoreNote, deleteNotePermanently}}>
             {children}
         </TrashContext.Provider>
     );

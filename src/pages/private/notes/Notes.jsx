@@ -3,12 +3,21 @@ import { CreateNote, AddLabel, FilterModal, Note } from "../../../components";
 import { useNote } from "../../../context";
 import "./notes.css";
 import { getFilteredNotes } from "../../../utils";
+import MoonLoader from "react-spinners/MoonLoader";
+import { css } from "@emotion/react";
+
+const override = css`
+  display: block;
+  margin: 8rem auto 0 auto;
+  border-color: var(--primary-color);
+`;
 
 export function Notes(){
     const [isFilterVisible, setIsFilterVisible] = useState(false);
     const [isLabelModalVisible, setIsLabelModalVisible] = useState(false);
-    const {noteState: {notes, searchTerm, filters: {sortByDate, sortByPriority, label}}} = useNote();
-
+    const {isNotesLoading, 
+        noteState: {notes, searchTerm, filters: {sortByDate, sortByPriority, label}}
+    } = useNote();
     const filteredNotes = getFilteredNotes(notes, sortByDate, sortByPriority, label, searchTerm);
 
     return (
@@ -24,7 +33,9 @@ export function Notes(){
                     Add Label</button>
                 </div>
             </div>
-            
+            {isNotesLoading
+            ? <MoonLoader color={`var(--primary-color)`} css={override} size={60}/>
+            : <> 
             <h3 className="align-subtitle">Pinned Notes</h3>
             {filteredNotes.some(note=>note.isPinned)
             ? <div className="notes-container">
@@ -38,7 +49,8 @@ export function Notes(){
                 {filteredNotes.filter(note=>!note.isPinned).map(note=><Note key={note.id} value={note}/>)}
             </div>
             : <p className="not-found">No notes found.</p> }
-
+            </>
+            }
             {isFilterVisible && <FilterModal setIsFilterVisible={setIsFilterVisible} />}
             {isLabelModalVisible && <AddLabel setIsLabelModalVisible={setIsLabelModalVisible} />}
         </div>
