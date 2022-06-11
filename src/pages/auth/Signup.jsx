@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import "./auth.css";
 import {useState} from "react";
 import { useAuth } from "../../context";
-import MoonLoader from "react-spinners/MoonLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/react";
 
 const override = css`
   display: block;
-  margin: 8rem auto 0 auto;
-  border-color: var(--primary-color);
+  margin: 0 0.5rem;
+  border-color: #fff;
 `;
 
 export function Signup(){
@@ -47,9 +47,7 @@ export function Signup(){
 
     return (
         <div className="container-auth">
-        {isAuthLoading
-        ? <MoonLoader color={`var(--primary-color)`} css={override} size={60}/>
-        : <form className="form box-shadow">
+        <form className="form box-shadow">
         <h3>Signup</h3>
         {errMsg && <p className="err-msg">{errMsg}</p>}
         <div className="input input-text">
@@ -81,10 +79,13 @@ export function Signup(){
         <div className="input input-checkbox-radio">
             <label><input type="checkbox" />I accept all terms & conditions</label>
         </div>
-        <button className="btn btn-primary" onClick={signUpHandler}>Create New Account</button>
+        <button className="btn btn-primary" onClick={signUpHandler} disabled={isAuthLoading}>
+            {isAuthLoading && 
+            <ClipLoader color={`#fff`} css={override} size={20}/>}
+            Create New Account
+        </button>
         <Link to="/login" className="btn btn-secondary-icon-text-no-border">Already have an account <i className="fas fa-chevron-right"></i></Link>
         </form>
-        }
         </div>
     );
 }

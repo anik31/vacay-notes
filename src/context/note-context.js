@@ -24,7 +24,8 @@ const initialState = {
         sortByDate: "",
         sortByPriority: "",
         label: []
-    }
+    },
+    isNotesLoading: true
 };
 
 const initialNoteState = {
@@ -44,7 +45,6 @@ const NoteProvider = ({ children }) => {
     const [note, setNote] = useState(initialNoteState);
     const [isNoteUpdate, setIsNoteUpdate] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
-    const [isNotesLoading, setIsNotesLoading] = useState(true);
 
     useEffect(() => {
         if (user) {
@@ -58,7 +58,7 @@ const NoteProvider = ({ children }) => {
                         id: doc.id,
                         })),
                     });
-                    setIsNotesLoading(false);
+                    noteDispatch({type: "SET_NOTES_LOADING", payload: false});
                 }
             );
 
@@ -119,7 +119,7 @@ const NoteProvider = ({ children }) => {
 
     return (
         <NoteContext.Provider value={{ 
-            noteState, noteDispatch, isNotesLoading,
+            noteState, noteDispatch,
             note, setNote, initialNoteState,
             prevNote, setPrevNote, 
             isExpanded, setIsExpanded,

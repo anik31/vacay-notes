@@ -1,5 +1,7 @@
 export function noteReducer(state, action){
     switch(action.type){
+        case "SET_NOTES_LOADING":
+            return {...state, isNotesLoading: action.payload};
         case "SET_NOTES":
             return {...state, notes: action.payload};
         case "SET_SEARCH_TERM":

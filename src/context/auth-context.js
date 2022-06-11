@@ -26,8 +26,9 @@ const AuthProvider = ({ children }) => {
       setIsLoggedIn(true);
       navigate(location?.state?.from?.pathname || "/home");
     }catch(err){
-      setIsAuthLoading(false);
       toast.error(err.message);
+    }finally{
+      setIsAuthLoading(false);
     }
   };
 
@@ -39,8 +40,9 @@ const AuthProvider = ({ children }) => {
       setIsLoggedIn(true);
       navigate(location?.state?.from?.pathname || "/home");
     }catch(err){
-      setIsAuthLoading(false);
       toast.error(err.message);
+    }finally{
+      setIsAuthLoading(false);
     }
   };
 
@@ -63,7 +65,6 @@ const AuthProvider = ({ children }) => {
   useEffect(()=>{
     if(user){
       setIsLoggedIn(true);
-      setIsAuthLoading(false);
     }
   },[user]);
 

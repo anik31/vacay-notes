@@ -10,7 +10,7 @@ const override = css`
 `;
 
 export function Label(){
-    const {noteState: {notes,labels}, isNotesLoading} = useNote();
+    const {noteState: {notes, labels, isNotesLoading}} = useNote();
 
     return (
         <div className="m-b-4">

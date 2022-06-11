@@ -15,9 +15,8 @@ const override = css`
 export function Notes(){
     const [isFilterVisible, setIsFilterVisible] = useState(false);
     const [isLabelModalVisible, setIsLabelModalVisible] = useState(false);
-    const {isNotesLoading, 
-        noteState: {notes, searchTerm, filters: {sortByDate, sortByPriority, label}}
-    } = useNote();
+    const {noteState: {notes, searchTerm, isNotesLoading, 
+        filters: {sortByDate, sortByPriority, label}}} = useNote();
     const filteredNotes = getFilteredNotes(notes, sortByDate, sortByPriority, label, searchTerm);
 
     return (
