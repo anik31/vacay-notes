@@ -1,4 +1,4 @@
-import { createContext, useContext, useLayoutEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -16,26 +16,33 @@ const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const [isAuthLoading, setIsAuthLoading] = useState(false);
   
   const loginUser = async(email, password) => {
     try{
+      setIsAuthLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Login successful");
       setIsLoggedIn(true);
       navigate(location?.state?.from?.pathname || "/home");
     }catch(err){
       toast.error(err.message);
+    }finally{
+      setIsAuthLoading(false);
     }
   };
 
   const signUpUser = async(email, password) => {
     try{
+      setIsAuthLoading(true);
       await createUserWithEmailAndPassword(auth, email, password);
       toast.success("Signup successful");
       setIsLoggedIn(true);
       navigate(location?.state?.from?.pathname || "/home");
     }catch(err){
       toast.error(err.message);
+    }finally{
+      setIsAuthLoading(false);
     }
   };
 
@@ -50,19 +57,19 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, loggedInUser => setUser(loggedInUser));
     return () => unsubscribe();
   }, []);
 
-  useLayoutEffect(()=>{
+  useEffect(()=>{
     if(user){
       setIsLoggedIn(true);
     }
   },[user]);
 
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn, loginUser, signUpUser, logoutUser }}>
+    <AuthContext.Provider value={{ user, isLoggedIn, isAuthLoading, loginUser, signUpUser, logoutUser }}>
       {children}
     </AuthContext.Provider>
   );

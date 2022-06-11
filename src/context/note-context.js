@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useLayoutEffect, useState } from "react";
+import { createContext, useContext, useReducer, useEffect, useState } from "react";
 import {db} from "../config/firebase-config";
 import {
     updateDoc,
@@ -24,7 +24,8 @@ const initialState = {
         sortByDate: "",
         sortByPriority: "",
         label: []
-    }
+    },
+    isNotesLoading: true
 };
 
 const initialNoteState = {
@@ -45,18 +46,19 @@ const NoteProvider = ({ children }) => {
     const [isNoteUpdate, setIsNoteUpdate] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (user) {
             const unsubscribe1 = onSnapshot(
                 collection(db, "users", `${user.uid}`, "notes"),
                 (snapshot) => {
-                noteDispatch({
-                    type: "SET_NOTES",
-                    payload: snapshot.docs.map((doc) => ({
-                    ...doc.data(),
-                    id: doc.id,
-                    })),
-                });
+                    noteDispatch({
+                        type: "SET_NOTES",
+                        payload: snapshot.docs.map((doc) => ({
+                        ...doc.data(),
+                        id: doc.id,
+                        })),
+                    });
+                    noteDispatch({type: "SET_NOTES_LOADING", payload: false});
                 }
             );
 
@@ -117,7 +119,7 @@ const NoteProvider = ({ children }) => {
 
     return (
         <NoteContext.Provider value={{ 
-            noteState, noteDispatch, 
+            noteState, noteDispatch,
             note, setNote, initialNoteState,
             prevNote, setPrevNote, 
             isExpanded, setIsExpanded,

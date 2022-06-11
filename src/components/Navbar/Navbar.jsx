@@ -18,7 +18,7 @@ export function Navbar(){
     return (
         <header className="header">
             <div className="logo-wrapper">
-                <Link to="/home"><img src={logo} alt="vacay-stream-logo" className="logo" /></Link>
+                <Link to="/"><img src={logo} alt="vacay-stream-logo" className="logo" /></Link>
             </div>
             {pathname==="/home" && 
             <div className="search-box">

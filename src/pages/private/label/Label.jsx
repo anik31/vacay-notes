@@ -1,12 +1,24 @@
 import { EmptyPage, Note } from "../../../components";
 import { useNote } from "../../../context";
+import MoonLoader from "react-spinners/MoonLoader";
+import { css } from "@emotion/react";
+
+const override = css`
+  display: block;
+  margin: 8rem auto 0 auto;
+  border-color: var(--primary-color);
+`;
 
 export function Label(){
-    const {noteState: {notes,labels}} = useNote();
+    const {noteState: {notes, labels, isNotesLoading}} = useNote();
 
     return (
         <div className="m-b-4">
             <h2 className="text-title">Labels</h2>
+            {isNotesLoading
+            ? <MoonLoader color={`var(--primary-color)`} css={override} size={60}/>
+            : 
+            <>
             {labels.length>0
             ? labels.map(label=>{
                 return <div key={label}>
@@ -20,6 +32,8 @@ export function Label(){
                 </div>
             })
             : <EmptyPage/>}
+            </>
+            }
         </div>
     );
 }
