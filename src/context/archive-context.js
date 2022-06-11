@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useLayoutEffect } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
 import {db} from "../config/firebase-config";
 import {
     deleteDoc,
@@ -17,7 +17,7 @@ const ArchiveProvider = ({ children }) => {
     const [archiveState, archiveDispatch] = useReducer(archiveReducer, []);
     const {user} = useAuth();
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (user) {
             const unsubscribe = onSnapshot(
                 collection(db, "users", `${user.uid}`, "archive"),
