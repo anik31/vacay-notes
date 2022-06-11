@@ -12,7 +12,7 @@ export function Navbar(){
 	const debouncedSearchVal = useDebounce(searchVal, 300);
 
 	useEffect(() => {
-		noteDispatch({type: "SET_SEARCH_TERM", payload: debouncedSearchVal});
+		noteDispatch({type: "SET_SEARCH_TERM", payload: debouncedSearchVal.trim()});
 	}, [debouncedSearchVal, noteDispatch]);
 
     return (

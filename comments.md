@@ -11,3 +11,4 @@
 - Added nested routes & made a WithSidebar component
 - Commented dark mode button, it's to be implemented in future.
 - Updated toast timer
+- Add empty input validation

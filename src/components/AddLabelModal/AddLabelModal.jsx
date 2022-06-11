@@ -1,15 +1,18 @@
 import "./addLabelModal.css";
 import { useState } from "react";
 import { useNote } from "../../context";
+import { toast } from "react-toastify";
 
 export function AddLabel({setIsLabelModalVisible}){
     const [label, setLabel] = useState("");
     const {addLabel} = useNote();
 
     const addLabelHandler = () => {
-        setIsLabelModalVisible(false);
-        if(label!==""){
-            addLabel(label);
+        if(label.trim()!==""){
+            addLabel(label.trim());
+            setIsLabelModalVisible(false);
+        }else{
+            toast.warning("Can't create empty label");
         }
     };
 

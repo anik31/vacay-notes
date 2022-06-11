@@ -23,7 +23,7 @@ export function Login(){
 
     const loginHandler = (e) => {
         e.preventDefault();
-        if(!credentials.email || !credentials.password){
+        if(!credentials.email.trim() || !credentials.password.trim()){
             setErrMsg("Enter credentials");
         }else{
             loginUser(credentials.email, credentials.password);

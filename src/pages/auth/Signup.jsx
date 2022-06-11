@@ -26,8 +26,8 @@ export function Signup(){
     
     const signUpHandler = (e) => {
         e.preventDefault();
-        if(!credentials.email || !credentials.password || !confirmPass){
-            setErrMsg("Kindly fill all the fields");
+        if(!credentials.email.trim() || !credentials.password.trim() || !confirmPass.trim()){
+            setErrMsg("Fill all the fields");
         }else if(!(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/).test(credentials.email)){
             setErrMsg("Invalid email");
         }else if(credentials.password !== confirmPass){

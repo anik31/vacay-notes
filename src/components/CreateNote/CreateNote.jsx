@@ -29,14 +29,16 @@ export function CreateNote(){
     }
 
     const createNoteHandler = () => {
-        if(note.title!=="" || note.content!==""){
+        if(note.title.trim()!=="" || note.content.trim()!==""){
             if(isNoteUpdate){
-                updateNote({id:prevNote.id, ...note})
+                updateNote({id:prevNote.id, ...note, title: note.title.trim(), content: note.content.trim()})
                 toast.success("Note updated"); 
             }else{
-                addNote(note);
+                addNote({...note, title: note.title.trim(), content: note.content.trim()});
             }
             closeCreateNoteHandler();
+        }else{
+            toast.warning("Note cannot be empty");
         }
     }
 
