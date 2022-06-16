@@ -12,3 +12,4 @@
 - Updated toast timer
 - Added empty input validation
 - Added loader
+- Updated README
