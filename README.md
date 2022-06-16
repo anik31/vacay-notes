@@ -23,14 +23,14 @@ https://user-images.githubusercontent.com/56336326/165702619-cd2f87fb-321e-45cf-
 - Change Card Color
 - Add Labels to notes
 - Filter & Sort by date, priority, labels
-- Search notes
+- Debounced search
 - Pin/Unpin notes
 - Trash & Archive
     - Archive/Unarchive notes
     - Delete/Restore/Permanent-delete notes
 - Authentication
     - Sign up
-    - Login (Persisting)
+    - Login
     - Logout
 - Mobile Responsive
 ## Tech stack
