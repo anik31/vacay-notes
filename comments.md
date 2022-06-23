@@ -13,3 +13,4 @@
 - Added empty input validation
 - Added loader
 - Updated README
+- Added typescript
