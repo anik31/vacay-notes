@@ -68,7 +68,7 @@ const AuthProvider = ({ children }: {children: ReactNode}) => {
   }, []);
 
   useEffect(()=>{
-    if(user){
+    if(user.email){
       setIsLoggedIn(true);
     }
   },[user]);
