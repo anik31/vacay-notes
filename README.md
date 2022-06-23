@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://vacay-notes.netlify.app/">
-    <img src="src/assets/images/logo.png" alt="Vacay Notes logo">
+    <img src="https://res.cloudinary.com/anik-vacay/image/upload/v1655703569/vacay-notes/logo_cmsf6z.png" alt="Vacay Notes logo">
   </a>
 </p>
 <h4 align="center"><i>Take Note With Purpose</i></h4>
@@ -34,6 +34,7 @@ https://user-images.githubusercontent.com/56336326/165702619-cd2f87fb-321e-45cf-
     - Logout
 - Mobile Responsive
 ## Tech stack
+- TypeScript
 - ReactJS
 - React Router v6
 - useContext + useReducer for state management
