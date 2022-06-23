@@ -19,9 +19,9 @@ const ArchiveProvider = ({ children }: {children: ReactNode}) => {
     const [archiveState, archiveDispatch] = useReducer(archiveReducer, []);
     const {user} = useAuth();
     const [isArchiveLoading, setIsArchiveLoading] = useState(true);
-
+    
     useEffect(() => {
-        if (user) {
+        if (user.uid) {
             const unsubscribe = onSnapshot(
                 collection(db, "users", user.uid, "archive"),
                 (snapshot) => {

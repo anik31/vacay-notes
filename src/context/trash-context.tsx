@@ -21,7 +21,7 @@ const TrashProvider = ({ children }: {children: ReactNode}) => {
     const [isTrashLoading, setIsTrashLoading] = useState(true);
 
     useEffect(() => {
-        if (user) {
+        if (user.uid) {
             const unsubscribe = onSnapshot(
                 collection(db, "users", user.uid, "trash"),
                 (snapshot) => {

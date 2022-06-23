@@ -48,7 +48,7 @@ const NoteProvider = ({ children }: {children: ReactNode}) => {
     const [isExpanded, setIsExpanded] = useState(false);
     
     useEffect(() => {
-        if (user) {
+        if (user.uid) {
             const unsubscribe1 = onSnapshot(
                 collection(db, "users", user.uid, "notes"),
                 (snapshot) => {
