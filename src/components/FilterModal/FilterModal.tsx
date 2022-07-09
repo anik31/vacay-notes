@@ -47,7 +47,7 @@ export function FilterModal({setIsFilterVisible}: FilterModalProp){
                 </ul>
                 <h4>Filter by labels</h4>
                 <ul>
-                    {labels.map(labelItem=><li key={labelItem} className="input">
+                    {labels?.map(labelItem=><li key={labelItem} className="input">
                     <label><input type="checkbox" checked={label.includes(labelItem)} 
                         onChange={()=>noteDispatch({type:"FILTER_BY_LABEL", payload:labelItem})}
                     /><span>{labelItem}</span></label></li>)}

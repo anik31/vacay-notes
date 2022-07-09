@@ -19,8 +19,8 @@ export function Label(){
             ? <MoonLoader color={`var(--primary-color)`} css={override} size={60}/>
             : 
             <>
-            {labels.length>0
-            ? labels.map(label=>{
+            {labels?.length>0
+            ? labels?.map(label=>{
                 return <div key={label}>
                     <h3 className="align-subtitle">{label}</h3>
                     {notes.some(note=>note?.labels?.includes(label))

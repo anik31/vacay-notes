@@ -17,7 +17,7 @@ export function LabelModal(){
         <div className="label-select">
             <h4>Label</h4>
             <ul>
-                {noteState.labels.map(label=>
+                {noteState?.labels?.map(label=>
                     <li key={label}>
                         <label>
                             <input data-label={label} type="checkbox" checked={note?.labels?.includes(label)} 

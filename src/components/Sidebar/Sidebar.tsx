@@ -32,7 +32,7 @@ export function Sidebar(){
                         <span>Labels</span>
                     </NavLink>
                     <ul className="label-list"> 
-                        {noteState.labels.map(label=><li key={label}>{label}</li>)}       
+                        {noteState?.labels?.map(label=><li key={label}>{label}</li>)}       
                     </ul>
                 </li>
             {sidebarData.map(item=>
